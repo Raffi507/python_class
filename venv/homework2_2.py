@@ -20,11 +20,18 @@ print(circle_1.perimeter())
 
 #2
 class Triangle:
+    num = 0
+
     def __init__(self, h, a, b, c):
         self.height = h
         self.a_side = a
         self.b_side = b
         self.c_side = c
+
+    def __new__(cls, *args, **kwargs):
+        cls.num +=1
+        return super().__new__(cls)
+
 
     def area(self):
         return self.height * self.b_side / 2
@@ -45,3 +52,4 @@ if w + t < q or w + q < t or q + t < w:
 else:
     print(f"The area is {triangle_1.area()}")
     print(f"The perimeter is {triangle_1.perimeter()}")
+    print(Triangle.num)
